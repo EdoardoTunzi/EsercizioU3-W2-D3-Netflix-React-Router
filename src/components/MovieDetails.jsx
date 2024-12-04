@@ -1,16 +1,56 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const MovieDetails = () => {
   const params = useParams();
   const movieId = params.movieId;
 
+  const [movieDetails, setMovieDetails] = useState(null);
+  //const [comments, setComments] = useState([]);
+  //fetch dettagli film
+  const fetchMovieDetails = () => {
+    fetch(`http://www.omdbapi.com/?apikey=286931b4&i=${movieId}`)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Error in fetching data from API");
+        }
+      })
+      .then((movie) => {
+        console.log(movie);
+        setMovieDetails(movie);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  //fetch commenti
+  //const fetchMovieComments = () => {};
+  useEffect(() => {
+    if (movieId) {
+      fetchMovieDetails();
+      //fetchMovieComments();
+    }
+  }, [movieId]);
   return (
     <Container>
-      <Row>
-        <Col>
-          <h1>Titolo film</h1>
-          <p>MOvie ID: {movieId}</p>
+      <Row className="justify-content-center">
+        <Col xs={12} md={8} lg={6}>
+          {movieDetails ? (
+            <>
+              <img src={movieDetails.Poster} alt={movieDetails.Title} />
+              <h1>{movieDetails.Title}</h1>
+              <p>Anno: {movieDetails.Year}</p>
+              <p>Genere: {movieDetails.Genre}</p>
+              <p>Trama: {movieDetails.Plot}</p>
+            </>
+          ) : (
+            <Spinner animation="border" role="status" variant="danger" className="d-block mx-auto my-3">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          )}
         </Col>
       </Row>
     </Container>

@@ -39,13 +39,13 @@ const MovieDetails = () => {
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
           {movieDetails ? (
-            <>
+            <div className="text-center border border-light rounded-5 p-5 bg-secondary">
               <img src={movieDetails.Poster} alt={movieDetails.Title} />
               <h1>{movieDetails.Title}</h1>
               <p>Anno: {movieDetails.Year}</p>
               <p>Genere: {movieDetails.Genre}</p>
               <p>Trama: {movieDetails.Plot}</p>
-            </>
+            </div>
           ) : (
             <Spinner animation="border" role="status" variant="danger" className="d-block mx-auto my-3">
               <span className="visually-hidden">Loading...</span>

@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Alert, Container, Row, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class MovieGallery extends Component {
   state = {
@@ -51,7 +52,9 @@ class MovieGallery extends Component {
           {this.state.movies.map((movie) => {
             return (
               <div key={movie.imdbID} className="col-6 col-sm-4 col-md-2">
-                <img className="img-fluid movie-poster" src={movie.Poster} alt={movie.Title} />
+                <Link to={"/movie-details/" + movie.imdbID}>
+                  <img className="img-fluid movie-poster" src={movie.Poster} alt={movie.Title} />
+                </Link>
               </div>
             );
           })}

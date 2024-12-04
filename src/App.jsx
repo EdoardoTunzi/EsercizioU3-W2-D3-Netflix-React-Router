@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import MyNavbar from "./components/MyNavbar";
-import ActionBar from "./components/ActionBar";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
 import { Container } from "react-bootstrap";
@@ -14,7 +13,6 @@ function App() {
     <BrowserRouter>
       <Container fluid className="bg-dark text-light min-vh-100">
         <MyNavbar />
-        <ActionBar />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/tv-shows" element={<TVShows />} />

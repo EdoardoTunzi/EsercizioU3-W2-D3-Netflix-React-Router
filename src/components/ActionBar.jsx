@@ -1,11 +1,11 @@
 import { Container, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from "react-bootstrap";
 import { Grid, JustifyLeft } from "react-bootstrap-icons";
 
-const ActionBar = () => {
+const ActionBar = ({ title }) => {
   return (
     <Container fluid className="d-flex flex-wrap justify-content-between align-items-center mb-2">
       <div className="d-flex align-items-center gap-4">
-        <h3>Saga Collections</h3>
+        <h3>{title}</h3>
         <Dropdown>
           <DropdownToggle className="border-white bg-black  border small" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Genres

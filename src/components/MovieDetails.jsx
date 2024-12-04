@@ -33,6 +33,7 @@ const MovieDetails = () => {
       fetchMovieDetails();
       //fetchMovieComments();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieId]);
   return (
     <Container>

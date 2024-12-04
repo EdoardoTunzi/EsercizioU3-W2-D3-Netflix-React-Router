@@ -1,5 +1,6 @@
 import { Container, Dropdown, Image, Nav, Navbar } from "react-bootstrap";
 import { BellFill, List, Search } from "react-bootstrap-icons";
+import { NavLink } from "react-router-dom";
 
 const MyNavbar = () => {
   return (
@@ -27,13 +28,21 @@ const MyNavbar = () => {
         {/* Navbar Items */}
         <Navbar.Collapse id="navbarSupportedContent">
           <Nav className="me-auto d-none d-md-flex">
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">TV Shows</Nav.Link>
-            <Nav.Link href="#" className="active">
+            <NavLink className="nav-link" to="/">
+              Home
+            </NavLink>
+            <NavLink className="nav-link" to="/tv-shows">
+              TV Shows
+            </NavLink>
+            <NavLink className="nav-link" to="/movies">
               Movies
-            </Nav.Link>
-            <Nav.Link href="#">Recently Added</Nav.Link>
-            <Nav.Link href="#">My List</Nav.Link>
+            </NavLink>
+            <NavLink className="nav-link" to="/recently">
+              Recently Added
+            </NavLink>
+            <NavLink className="nav-link" to="/mylist">
+              My List
+            </NavLink>
           </Nav>
 
           {/* Right Side Icons */}
